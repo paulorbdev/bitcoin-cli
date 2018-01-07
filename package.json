@@ -10,12 +10,12 @@
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --reporter nyan",
-    "test:tdd": "npm run test --watch",
+    "test:tdd": "npm run test -- --watch",
     "test:coverage": "nyc npm test"
   },
   "preferGlobal": true,
   "bin": {
-    "btc-converter": "bin/main.js"
+    "bitcoin-cli": "bin/main.js"
   },
   "nyc": {
     "reporter": [
