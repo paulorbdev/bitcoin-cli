@@ -3,6 +3,7 @@ const nock = require('nock');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 const expect = chai.expect;
+const chalk = require('chalk');
 
 const convertBTC = require('../src/ConvertBTC');
 chai.use(sinonChai);
@@ -33,7 +34,7 @@ describe('ConvertBTC', () => {
 
       convertBTC();
       setTimeout(() => {
-        expect(consoleStub).to.have.been.calledWith('1 BTC to USD = 15053.34');
+        expect(consoleStub).to.have.been.calledWith(`${chalk.red(1)} BTC to ${chalk.cyan('USD')} = ${chalk.yellow(15053.34)}`);
         done();
       }, 300);
   });
@@ -46,7 +47,7 @@ describe('ConvertBTC', () => {
 
       convertBTC('USD', 10);
       setTimeout(() => {
-        expect(consoleStub).to.have.been.calledWith('10 BTC to USD = 15053.34');
+        expect(consoleStub).to.have.been.calledWith(`${chalk.red(10)} BTC to ${chalk.cyan('USD')} = ${chalk.yellow(15053.34)}`);
         done();
       }, 300);
   });
@@ -59,7 +60,7 @@ describe('ConvertBTC', () => {
 
       convertBTC('BRL');
       setTimeout(() => {
-        expect(consoleStub).to.have.been.calledWith('1 BTC to BRL = 15053.34');
+        expect(consoleStub).to.have.been.calledWith(`${chalk.red(1)} BTC to ${chalk.cyan('BRL')} = ${chalk.yellow(15053.34)}`);
         done();
       }, 300);
   });
@@ -72,7 +73,7 @@ describe('ConvertBTC', () => {
 
       convertBTC('BRL');
       setTimeout(() => {
-        expect(consoleStub).to.have.been.calledWith('Something went wrong with the API. Try in a few minutes');
+        expect(consoleStub).to.have.been.calledWith(chalk.red('Something went wrong with the API. Try in a few minutes'));
         done();
       }, 300);
   });

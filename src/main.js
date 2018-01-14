@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const chalk = require('chalk');
 const program = require('commander');
 const pkg = require('../package.json');
 const convertBTC = require('./ConvertBTC');
@@ -10,4 +11,4 @@ program
   .option('-A, --amount <>', 'Value in bitcoin to be converted. (Default: 1)')
   .parse(process.argv);
 
-console.log(convertBTC(program.currency, program.amount));
+convertBTC(program.currency, program.amount);
